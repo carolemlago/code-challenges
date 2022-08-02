@@ -76,9 +76,9 @@ def climbStairs(self, n: int) -> int:
         return one
 
 # Best Time to Buy and Sell Stock
-# You are given an array prices where prices[i] is the price of a given stock on the ith day.
-# You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
-# Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+""" You are given an array prices where prices[i] is the price of a given stock on the ith day.
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0."""
 def maxProfit(self, prices: List[int]) -> int:
         left, right = 0, 1
         max_profit = 0
@@ -94,6 +94,34 @@ def maxProfit(self, prices: List[int]) -> int:
             
         return max_profit
 
+# Running Sum of 1d Array
+""" Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+Return the running sum of nums.
+"""
+def runningSum(self, nums: List[int]) -> List[int]:
+    results = [0] * len(nums)
+    results[0] = nums[0]
+    for i in range(1, len(nums)):
+        results[i] = results[i-1] + nums[i]
+    return results
+            
+            
+# Find Pivot Index
+""" Given an array of integers nums, calculate the pivot index of this array.
+The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.
+If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
+Return the leftmost pivot index. If no such index exists, return -1."""
+
+def pivotIndex(self, nums: List[int]) -> int:
+    total = sum(nums)
+    left_sum = 0
+    for i in range(len(nums)):
+        right_sum = total - nums[i] - left_sum
+        if left_sum == right_sum:
+            return i
+        left_sum += nums[i]
+    return -1
+            
 
 # Codewars
 # The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
@@ -101,6 +129,5 @@ def maxProfit(self, prices: List[int]) -> int:
 
 def two_oldest_ages(ages):
     ages.sort()
-    
     
     return ages[-2::]
