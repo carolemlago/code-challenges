@@ -145,3 +145,32 @@ def to_camel_case(text):
         return text
     return str[0] + ''.join(i.capitalize() for i in str[1:])
     
+# Unique In Order
+"""Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements."""
+
+def unique_in_order(iterable):
+    list_unique = []
+    letter = None
+    for current in iterable:
+        if current != letter:
+            list_unique.append(current)
+            letter = current
+    return list_unique
+
+# The highest profit wins!
+"""Ben has a very simple idea to make some profit: he buys something and sells it again. Of course, this wouldn't give him any profit at all if he was simply to buy and sell it at the same price. Instead, he's going to buy it for the lowest possible price and sell it at the highest."""
+def min_max(lst):
+  return [min(lst), max(lst)]
+
+# or 
+
+def min_max(lst):
+    min, max = lst[0], lst[0]
+    for num in lst:
+        if num < min:
+            min = num
+        elif num > max:
+            max = num
+    
+    return [min, max]
+    
