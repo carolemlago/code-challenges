@@ -121,7 +121,24 @@ def pivotIndex(self, nums: List[int]) -> int:
             return i
         left_sum += nums[i]
     return -1
-            
+
+# Range Sum Query - Immutable
+""" Given an integer array nums, handle multiple queries of the following type:
+
+Calculate the sum of the elements of nums between indices left and right inclusive where left <= right.
+Implement the NumArray class:
+
+NumArray(int[] nums) Initializes the object with the integer array nums.
+int sumRange(int left, int right) Returns the sum of the elements of nums between indices left and right inclusive (i.e. nums[left] + nums[left + 1] + ... + nums[right]).""" 
+
+class NumArray:
+
+    def __init__(self, nums: List[int]):
+        self.cumulative = [0] + list(accumulate(nums))
+        
+
+    def sumRange(self, left: int, right: int) -> int:
+        return self.cumulative[right+1]-self.cumulative[left]
 
 # Codewars
 # The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
@@ -173,4 +190,30 @@ def min_max(lst):
             max = num
     
     return [min, max]
-    
+
+# Simple Pig Latin
+""" Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched """
+
+def pig_it(text):
+    words = text.split()
+    pig_list = []
+    for word in words:
+        if word in '!.%&?':
+            pig_list.append(word)
+        else:
+            word = word[1:] + word[0] + "ay"
+            pig_list.append(word)
+    return ' '.join(pig_list)
+
+    # or
+
+def pig_it(text):
+    words = text.split()
+    pig_list = []
+    for word in words:
+        if word.isalpha():
+            word = word[1:] + word[0] + "ay"
+            pig_list.append(word)
+        else:
+            pig_list.append(word)
+    return ' '.join(pig_list)
