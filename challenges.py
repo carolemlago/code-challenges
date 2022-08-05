@@ -140,6 +140,47 @@ class NumArray:
     def sumRange(self, left: int, right: int) -> int:
         return self.cumulative[right+1]-self.cumulative[left]
 
+# Isomorphic Strings
+
+""" Given two strings s and t, determine if they are isomorphic.
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself. """
+  
+  def isIsomorphic(self, s: str, t: str) -> bool:
+        map_letters = {}
+        if len(s) != len(t):
+            return False
+        else:
+            for i in range(len(s)):
+                if s[i] in map_letters.keys():
+                    if map_letters[s[i]] == t[i]:
+                        pass  
+                    else:
+                        return False
+                else:
+                    if t[i] in map_letters.values():
+                        return False
+                    else:
+                        map_letters[s[i]] = t[i]
+            return True
+
+# Is Subsequence
+""" Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not). """   
+
+def isSubsequence(self, s: str, t: str) -> bool:
+    if not s:
+        return True
+    i = 0
+    for char in t:
+        if char == s[i]:
+            i += 1
+        if i == len(s):
+            break
+    return i == len(s)
+
+
+
 # Codewars
 # The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
 # The order of the numbers passed in could be any order. The array will always include at least 2 items. If there are two or more oldest age, then return both of them in array format.
@@ -243,3 +284,19 @@ def plus(y): return lambda x: x + y
 def minus(y): return lambda x: x - y
 def times(y): return lambda x: x * y
 def divided_by(y): return lambda x: x // y
+
+# Human Readable Time
+""" Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
+
+HH = hours, padded to 2 digits, range: 00 - 99
+MM = minutes, padded to 2 digits, range: 00 - 59
+SS = seconds, padded to 2 digits, range: 00 - 59
+The maximum time never exceeds 359999 (99:59:59) """
+
+def make_readable(seconds):
+    min, sec = divmod(seconds, 60)
+    hour, min = divmod(min, 60)
+    return "%02d:%02d:%02d" % (hour, min, sec)
+
+
+
