@@ -179,8 +179,50 @@ def isSubsequence(self, s: str, t: str) -> bool:
             break
     return i == len(s)
 
+# Merge Two Sorted Lists
 
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = output = ListNode()
+    
+        while list1 and list2:
+            if list1.val < list2.val:
+                output.next = list1
+                list1 = list1.next
+            else:
+                output.next = list2
+                list2 = list2.next
+            output = output.next
+        if list1:
+            output.next = list1
+        elif list2:
+            output.next = list2
+        return dummy.next
+        
+# Reverse Linked List
+""" Given the head of a singly linked list, reverse the list, and return the reversed list. """
 
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev, current = None, head
+        
+        while current:
+            temp = current.next
+            current.next = prev
+            prev = current
+            current = temp
+            
+        return prev
 # Codewars
 # The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
 # The order of the numbers passed in could be any order. The array will always include at least 2 items. If there are two or more oldest age, then return both of them in array format.
@@ -299,4 +341,25 @@ def make_readable(seconds):
     return "%02d:%02d:%02d" % (hour, min, sec)
 
 
+# Valid Braces
+""" Write a function that takes a string of braces, and determines if the order of the braces is valid. It should return true if the string is valid, and false if it's invalid.
 
+This Kata is similar to the Valid Parentheses Kata, but introduces new characters: brackets [], and curly braces {}. Thanks to @arnedag for the idea!
+
+All input strings will be nonempty, and will only consist of parentheses, brackets and curly braces: ()[]{}.
+
+What is considered Valid?
+A string of braces is considered valid if all braces are matched with the correct brace. """
+
+def valid_braces(string):
+    parens_dict = {")":"(","]":"[","}":"{"}
+    
+    to_visit = []
+    for char in string:
+        if char in parens_dict.values():
+            to_visit.append(char)
+        elif to_visit and parens_dict[char] == to_visit[-1]:
+            to_visit.pop()
+        else:
+            return False
+    return to_visit == []
