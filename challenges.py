@@ -223,6 +223,25 @@ class Solution:
             current = temp
             
         return prev
+
+# Hacker Rank
+
+# There is a large pile of socks that must be paired by color. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are.
+# Example
+# There is one pair of color  and one of color . There are three odd socks left, one of each color. The number of pairs is .
+
+def sockMerchant(n, ar):
+    pair_stack = []
+    count = 0
+    for i in ar:
+        if i not in pair_stack:
+            pair_stack.append(i)
+        else:
+            pair_stack.remove(i)
+            count += 1
+            
+    return count
+
 # Codewars
 # The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
 # The order of the numbers passed in could be any order. The array will always include at least 2 items. If there are two or more oldest age, then return both of them in array format.
