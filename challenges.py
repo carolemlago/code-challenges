@@ -165,8 +165,8 @@ All occurrences of a character must be replaced with another character while pre
             return True
 
 # Is Subsequence
-""" Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
-A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not). """   
+"""Given two strings s and t, return true if s is a subsequence of t, or false otherwise. 
+A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not)"""
 
 def isSubsequence(self, s: str, t: str) -> bool:
     if not s:
@@ -224,6 +224,37 @@ class Solution:
             
         return prev
 
+# 1. Two Sum
+
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        answer = {}
+        for i, elem in enumerate(nums):
+            if target - elem in answer:
+                return answer[target - elem], i
+            answer[elem] = i
+
+
+# Same Tree
+""" Given the roots of two binary trees p and q, write a function to check if they are the same or not.
+
+Two binary trees are considered the same if they are structurally identical, and the nodes have the same value. """
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if not p and not q:
+            return True
+
+        if not p or not q or p.val != q.val:
+            return False
+
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        
 # Hacker Rank
 
 # There is a large pile of socks that must be paired by color. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are.
