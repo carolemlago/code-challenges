@@ -343,7 +343,35 @@ def countingValleys(steps, path):
         else:
             cur_level -= 1
     return valleys
-        
+
+
+#!/bin/python3
+
+# import math
+# import os
+# import random
+# import re
+# import sys
+
+#
+# Complete the 'jumpingOnClouds' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY c as parameter.
+#
+
+def jumpingOnClouds(c):
+    jump = 0
+    i = 0
+    while i < n - 1:
+        if i + 2 < n and c[i+2] == 0:
+            jump += 1
+            i += 2
+        elif i + 1 < n and c[i+1] == 0:
+            jump += 1
+            i += 1
+    return jump
+            
 
 # Codewars
 # The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
