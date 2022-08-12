@@ -371,7 +371,30 @@ def jumpingOnClouds(c):
             jump += 1
             i += 1
     return jump
-            
+
+#!/bin/python3
+
+# import math
+# import os
+# import random
+# import re
+# import sys
+
+#
+# Complete the 'repeatedString' function below.
+#
+# The function is expected to return a LONG_INTEGER.
+# The function accepts following parameters:
+#  1. STRING s
+#  2. LONG_INTEGER n
+#
+
+def repeatedString(s, n):
+   n1 = (n//len(s))
+   x = s.count("a")
+   x1 = n1 * x
+   x2 = s[:n%(len(s))].count("a")
+   return x1 + x2           
 
 # Codewars
 # The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
