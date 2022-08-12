@@ -315,6 +315,36 @@ def sockMerchant(n, ar):
             
     return count
 
+#!/bin/python3
+
+# import math
+# import os
+# import random
+# import re
+# import sys
+
+#
+# Complete the 'countingValleys' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER steps
+#  2. STRING path
+#
+
+def countingValleys(steps, path):
+    cur_level = 0
+    valleys = 0
+    for p in path:
+        if p == "U":
+            cur_level += 1
+            if cur_level == 0:
+                valleys += 1
+        else:
+            cur_level -= 1
+    return valleys
+        
+
 # Codewars
 # The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
 # The order of the numbers passed in could be any order. The array will always include at least 2 items. If there are two or more oldest age, then return both of them in array format.
