@@ -536,3 +536,20 @@ def valid_braces(string):
         else:
             return False
     return to_visit == []
+
+
+def digital_root(n):
+    # iterate through n
+#     sum of  x in n  keep add until len(res) = 1
+    dig = str(n)
+    res = 0
+    i = 0
+    while i < len(dig):
+        for n in dig:
+            res += int(n)
+            i += 1
+    if len(str(res)) > 1:
+        return digital_root(res)
+    else:
+        return res
+        
