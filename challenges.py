@@ -394,7 +394,20 @@ def repeatedString(s, n):
    x = s.count("a")
    x1 = n1 * x
    x2 = s[:n%(len(s))].count("a")
-   return x1 + x2           
+   return x1 + x2  
+
+# Arrays: Left Rotation
+
+""" A left rotation operation on an array shifts each of the array's elements  unit to the left. For example, if  left rotations are performed on array , then the array would become . Note that the lowest index item moves to the highest index in a rotation. This is called a circular array.
+
+Given an array  of  integers and a number, , perform  left rotations on the array. Return the updated array to be printed as a single line of space-separated integers. """
+
+def rotLeft(a, d):
+    d = d % n # if it's not divisible by len(a), rotate only the mod
+    l1 = a[0:d] # slice from array up to that index = d
+    l2 = a[d:n] # remainder slice
+    return l2 + l1 # inverted
+
 
 # Codewars
 # The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
