@@ -407,8 +407,32 @@ def rotLeft(a, d):
     l1 = a[0:d] # slice from array up to that index = d
     l2 = a[d:n] # remainder slice
     return l2 + l1 # inverted
+# New Year Chaos
 
+""" It is New Year's Day and people are in line for the Wonderland rollercoaster ride. Each person wears a sticker indicating their initial position in the queue from  to . Any person can bribe the person directly in front of them to swap positions, but they still wear their original sticker. One person can bribe at most two others.
 
+Determine the minimum number of bribes that took place to get to a given queue order. Print the number of bribes, or, if anyone has bribed more than two people, print Too chaotic.
+
+ """
+def minimumBribes(q):
+    # create variable to count moves
+    # compare expected index with q[i] starting from the end.
+    # increment moves depending on if i == i - 1 or i == i-2
+    moves = 0
+    for i in range(len(q)-1, 0, -1):
+        if q[i] != i+1:
+            if q[i-1] == i+1:
+                moves += 1
+                q[i-1], q[i] = q[i], q[i-1]
+            elif q[i-2] == i+1:
+                moves += 2
+                q[i-2], q[i-1], q[i] = q[i-1], q[i], q[i-2]
+            else:
+                print("Too chaotic")
+                return
+    print(moves)
+        
+        
 # Codewars
 # The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
 # The order of the numbers passed in could be any order. The array will always include at least 2 items. If there are two or more oldest age, then return both of them in array format.
