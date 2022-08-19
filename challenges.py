@@ -324,12 +324,24 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         # use fast and slow pointers, and if they meet at some point, then it's a cycle
         slow = fast = head
-        while slow.next and fast.next and fast.next.next:
+        while slow and fast and fast.next:
+            slow = slow.next
             fast = fast.next.next
-            slow = fast
             if slow == fast:
                 return True
         return False
+
+        #or
+
+def hasCycle(self, head: Optional[ListNode]) -> bool:
+    seen = set() # runtime and spacetime = O(n)
+    current = head
+    while current:
+        if current in seen:
+            return True
+        seen.add(current)
+        current = current.next
+    return False
 
 # Hacker Rank
 
