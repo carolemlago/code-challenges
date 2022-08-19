@@ -230,7 +230,7 @@ class Solution:
         answer = {}
         for i, elem in enumerate(nums):
             if target - elem in answer:
-                return answer[target - elem], i
+                return [answer[target - elem], i]
             answer[elem] = i
 
 
@@ -342,6 +342,45 @@ def hasCycle(self, head: Optional[ListNode]) -> bool:
         seen.add(current)
         current = current.next
     return False
+# 234. Palindrome Linked List
+
+""" Given the head of a singly linked list, return true if it is a palindrome."""
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        reverse = []
+        curr = head
+        while curr:
+            reverse.append(curr.val)
+            curr = curr.next
+        return reverse == reverse[::-1]
+
+#  203. Remove Linked List Elements
+
+""" Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head. """
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+              
+        curr = head
+        if head is None:
+            return head  
+        while curr.next:
+            if curr.next.val == val:
+                curr.next = curr.next.next
+            else:
+                curr = curr.next
+        if head.val == val:
+            head = head.next
+        return head
 
 # Hacker Rank
 
