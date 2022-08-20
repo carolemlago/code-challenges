@@ -382,6 +382,29 @@ class Solution:
             head = head.next
         return head
 
+# 83. Remove Duplicates from Sorted List
+
+""" Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+"""
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        cur = head
+        if head is None:
+            return head
+        while cur and cur.next:
+            if cur.val != cur.next.val:
+                cur = cur.next
+            else:
+                cur.next = cur.next.next
+        return head
+                
+
 # Hacker Rank
 
 # There is a large pile of socks that must be paired by color. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are.
