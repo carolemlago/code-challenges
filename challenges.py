@@ -13,7 +13,7 @@ class Solution:
         dup = [] # [char, count]
         for c in s:
             if dup and dup[-1][0] == c:
-                dup[-1][1]
+                dup[-1][1] += 1
             else:
                 dup.append([c, 1])
             if dup[-1][1] == k:
@@ -22,6 +22,8 @@ class Solution:
         for char, count in dup:
             ans += (char * count)
         return ans
+
+
 # Missing Number
 # Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 def missingNumber(self, nums: List[int]) -> int:
