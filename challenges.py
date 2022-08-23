@@ -1,6 +1,27 @@
 # Leet Code
 
+# 1209. Remove All Adjacent Duplicates in String II
 
+""" You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them, causing the left and the right side of the deleted substring to concatenate together.
+
+We repeatedly make k duplicate removals on s until we no longer can.
+
+Return the final string after all such duplicate removals have been made. It is guaranteed that the answer is unique. """
+
+class Solution:
+    def removeDuplicates(self, s: str, k: int) -> str:
+        dup = [] # [char, count]
+        for c in s:
+            if dup and dup[-1][0] == c:
+                dup[-1][1]
+            else:
+                dup.append([c, 1])
+            if dup[-1][1] == k:
+                dup.pop()
+        ans = ""
+        for char, count in dup:
+            ans += (char * count)
+        return ans
 # Missing Number
 # Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 def missingNumber(self, nums: List[int]) -> int:
