@@ -1,5 +1,28 @@
 # Leet Code
 
+
+# Valid Anagram
+
+""" Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+"""
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        countS = {}
+        countT = {}
+        
+        for i in range(len(s)):
+            countS[s[i]] = 1 + countS.get(s[i], 0)
+            countT[t[i]] = 1 + countT.get(t[i], 0)
+        for c in countS:
+            if countS[c] != countT[c]:
+                return False
+        return True
+                
+
 # 1209. Remove All Adjacent Duplicates in String II
 
 """ You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them, causing the left and the right side of the deleted substring to concatenate together.
@@ -694,15 +717,17 @@ A string of braces is considered valid if all braces are matched with the correc
 
 def valid_braces(string):
     parens_dict = {")":"(","]":"[","}":"{"}
-    
     to_visit = []
+
     for char in string:
         if char in parens_dict.values():
             to_visit.append(char)
         elif to_visit and parens_dict[char] == to_visit[-1]:
             to_visit.pop()
+
         else:
             return False
+
     return to_visit == []
 
 
