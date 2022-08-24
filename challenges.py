@@ -762,3 +762,41 @@ def first_non_repeating_letter(string):
             return string[i]
     return ""
                 
+# Apple and Orange
+
+""" Function Description
+
+Complete the countApplesAndOranges function in the editor below. It should print the number of apples and oranges that land on Sam's house, each on a separate line.
+
+countApplesAndOranges has the following parameter(s):
+
+s: integer, starting point of Sam's house location.
+t: integer, ending location of Sam's house location.
+a: integer, location of the Apple tree.
+b: integer, location of the Orange tree.
+apples: integer array, distances at which each apple falls from the tree.
+oranges: integer array, distances at which each orange falls from the tree. """
+
+def countApplesAndOranges(s, t, a, b, apples, oranges):
+
+    # rangeHouse = [s, t] 
+    # a  # prefixA => position of tree Apples   
+    # b  # prefixB=> position of tree Oranges
+    # apples # => array where apples fell
+    # oranges # => array where oranges fell
+    # ansA = s <= (apples[i] + a) <= t
+    # ansB = s <= (oranges[i] + b) <= t
+    
+    countA = 0
+    countO = 0
+    
+  
+    for i in range(len(apples)):
+        if (apples[i] + a) >= s and (apples[i] + a) <= t:
+            countA += 1
+    for i in range(len(oranges)):
+        if (oranges[i] + b) >= s and (oranges[i] + b) <= t:
+            countO += 1
+
+    print(countA)
+    print(countO) 
