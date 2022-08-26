@@ -472,6 +472,48 @@ class Solution:
 
 # Hacker Rank
 
+
+#  Caesar Cypher
+"""Julius Caesar protected his confidential information by encrypting it using a cipher. Caesar's cipher shifts each letter by a number of letters. If the shift takes you past the end of the alphabet, just rotate back to the front of the alphabet. In the case of a rotation by 3, w, x, y and z would map to z, a, b and c.
+
+Original alphabet:      abcdefghijklmnopqrstuvwxyz
+Alphabet rotated +3:    defghijklmnopqrstuvwxyzabc
+Example
+
+The alphabet is rotated by , matching the mapping above. The encrypted string is .
+Note: The cipher only encrypts letters; symbols, such as -, remain unencrypted.
+Function Description
+Complete the caesarCipher function in the editor below.
+caesarCipher has the following parameter(s):
+string s: cleartext
+int k: the alphabet rotation factor
+Returns
+
+string: the encrypted string
+ """
+def caesarCipher(s, k):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    rotated = alphabet[k%26:] + alphabet[:k%26] #rotated alphabet by +k
+    
+    encrypted_alphabet = {} #alphabet to keep track of original letter and the corresponding rotated one
+    for i in range(len(alphabet)): 
+        encrypted_alphabet[alphabet[i]] = rotated[i]
+        
+    message = ""
+    for letter in s: # loop to add letter to message
+        if letter.isupper():
+            if letter.lower() in encrypted_alphabet:
+                message += encrypted_alphabet[letter.lower()].upper()
+        
+        elif letter.islower():
+            if letter in encrypted_alphabet:
+                message += encrypted_alphabet[letter]
+        else:
+            message += letter
+    return message
+
+
+# Sock Merchant
 # There is a large pile of socks that must be paired by color. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are.
 # Example
 # There is one pair of color  and one of color . There are three odd socks left, one of each color. The number of pairs is .
