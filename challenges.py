@@ -486,7 +486,40 @@ class Solution:
 
 # Hacker Rank
 
+#  Palindrome Index
+""" Given a string of lowercase letters in the range ascii[a-z], determine the index of a character that can be removed 
+to make the string a palindrome. There may be more than one solution, but any will do. If the word is already a palindrome 
+or there is no solution, return -1. Otherwise, return the index of a character to remove. """
+#!/bin/python3
 
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'palindromeIndex' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts STRING s as parameter.
+#
+
+def palindromeIndex(s):
+    # check if string is a plaindrome
+    if s == s[::-1]:
+        return -1
+    
+    # main logic: iterate through half of the string and compare elements
+    n = len(s)
+    for i in range(n//2):
+        if s[i] != s[n-1-i]: # if the first elem is diff from last elem
+            if s[i:n-1-i] == s[i:n-1-i][::-1]:  # if the list up to last elem is palindrome, return last index
+                return n-1-i
+            elif s[i+1:n-i] == s[i+1:n-i][::-1]:    # if list excluding first elem is palindrome, return i
+                return i
+    return -1       # if we loop through and can't find a solution, return - 1     
+        
 #  Caesar Cypher
 """Julius Caesar protected his confidential information by encrypting it using a cipher. Caesar's cipher shifts each letter by a number of letters. If the shift takes you past the end of the alphabet, just rotate back to the front of the alphabet. In the case of a rotation by 3, w, x, y and z would map to z, a, b and c.
 
