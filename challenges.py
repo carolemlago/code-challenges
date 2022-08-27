@@ -486,6 +486,24 @@ class Solution:
 
 # Hacker Rank
 
+# Forming Magic Square
+
+""" We define a magic square to be an  matrix of distinct positive integers from  to  where the sum of any row, column, or diagonal of length  is always equal to the same number: the magic constant.
+You will be given a  matrix  of integers in the inclusive range . We can convert any digit  to any other digit  in the range  at cost of . Given , convert it into a magic square at minimal cost. Print this cost on a new line.
+Note: The resulting magic square must contain distinct integers in the inclusive range . """
+
+def formingMagicSquare(s):
+    # magic constant = 15
+    s = sum(s, []) # turn 2d in 1d array
+    magic = [[8,1, 6, 3, 5, 7, 4, 9, 2], [6, 1, 8, 7, 5, 3, 2, 9, 4], [4, 9, 2, 3, 5, 7, 8, 1, 6], [2, 9, 4, 7, 5, 3, 6, 1, 8], [8, 3, 4, 1, 5, 9, 6, 7, 2], [4, 3, 8, 9, 5, 1, 2, 7, 6], [6, 7, 2, 1, 5, 9, 8, 3, 4], [2, 7, 6, 9, 5, 1, 4, 3, 8]]
+    min_cost = float('inf')
+    for mag in magic:
+        diff = 0
+        for i, j in zip(s, mag):
+            diff += abs(i-j)
+        min_cost = min(min_cost, diff)
+    return min_cost
+
 #  Palindrome Index
 """ Given a string of lowercase letters in the range ascii[a-z], determine the index of a character that can be removed 
 to make the string a palindrome. There may be more than one solution, but any will do. If the word is already a palindrome 
